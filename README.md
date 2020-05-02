@@ -25,8 +25,16 @@ Here are the provided endpoints:
         put -> /api/posts (publish a post)
         get -> /api/posts (see public posts of followed users and your all posts. Send with '?hashtag=..' param for hashtag filter.)
 
+Angular8 used for front-end development. I used FlatLab Admin Template for styling.
+
 # System
 
 * Node v12.16.2
 * Express v6.14.4
+
 * MongoDb v4.2.6
+
+* Angular v8.0.1
+* TypeScript v3.4.3
+* rxjs v6.4.0
+* Bootstrap v3.1

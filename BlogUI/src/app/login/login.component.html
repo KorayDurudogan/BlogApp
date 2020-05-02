@@ -1,0 +1,25 @@
+<div class="container">
+    <form [formGroup]="loginForm" class="form-signin" (ngSubmit)="onSubmit()">
+        <h2 class="form-signin-heading">{{headerText}}</h2>
+        <div formGroupName="loginWrap" class="login-wrap">
+            <div formGroupName="emailDiv"
+                [ngClass]="{'form-group':true, 'has-error': !loginForm.get('loginWrap.emailDiv.emailTextbox').valid && loginForm.get('loginWrap.emailDiv.emailTextbox').touched}">
+                <input formControlName="emailTextbox" type="text" class="form-control" placeholder="E-mail">
+                <p class="help-block"
+                    *ngIf="!loginForm.get('loginWrap.emailDiv.emailTextbox').valid && loginForm.get('loginWrap.emailDiv.emailTextbox').touched && loginForm.get('loginWrap.emailDiv.emailTextbox').errors.email">
+                    Please check your email !
+                </p>
+            </div>
+            <div formGroupName="passDiv"
+                [ngClass]="{'form-group':true, 'has-error': !loginForm.get('loginWrap.passDiv.passwordTextbox').valid && loginForm.get('loginWrap.passDiv.passwordTextbox').touched}">
+                <input formControlName="passwordTextbox" type="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group has-error">
+                <p class="help-block">{{ serviceErrorMessage }}</p>
+            </div>
+            <button [disabled]="!loginForm.valid" class="btn btn-lg btn-login btn-block"
+                type="submit">{{buttonText}}</button>
+            <a (click)="toggleRegisterMode()">{{modeSwitchText}}</a>
+        </div>
+    </form>
+</div>
