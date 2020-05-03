@@ -3,10 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostsListComponent } from './posts/posts-list/posts-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: DashboardComponent }
+  {
+    path: '', component: DashboardComponent, children: [
+      {
+        path: 'posts', component: PostsComponent, children: [
+          { path: '', component: PostsListComponent }
+        ]
+      },
+      { path: '', redirectTo: 'posts', pathMatch: 'full' }
+    ]
+  }
 ];
 
 @NgModule({

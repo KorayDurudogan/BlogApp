@@ -1,0 +1,27 @@
+<app-error-panel [isVisible]="isErrorVisible" [errorMessage]="serviceErrorMessage"></app-error-panel>
+
+<div class="input-group m-bot15">
+    <span class="input-group-addon">#</span>
+    <input [(ngModel)]="hashtag" type="text" style="width: 100px; margin-right: 10px;" class="form-control" placeholder="Hashtag">
+    <button (click)="searchByHashtag()" type="button" class="btn btn-info "><i class="fa fa-search"></i> Search</button>
+</div>
+
+<div *ngFor="let post of posts" class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse">
+                <b>{{post.publisher}}</b> / {{post.head}}
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" style="height: auto;">
+        <div class="panel-body">
+            {{post.body}}
+            <div *ngIf="post.hashtags">
+                <hr>
+                <span *ngFor="let hashtag of post.hashtags" style="margin-right: 5px;"
+                    class="label label-primary">#{{hashtag}}</span>
+            </div>
+        </div>
+    </div>
+</div>

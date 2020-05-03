@@ -1,14 +1,17 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-//import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PostsModule } from './posts/posts.module';
+import { TokenInterceptor } from './token.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,10 +23,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    //MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    PostsModule,
+    RouterModule,
+    SharedModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
