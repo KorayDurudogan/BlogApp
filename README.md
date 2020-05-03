@@ -25,7 +25,9 @@ Here are the provided endpoints:
         put -> /api/posts (publish a post)
         get -> /api/posts (see public posts of followed users and your all posts. Send with '?hashtag=..' param for hashtag filter.)
 
-Angular8 used for front-end development. I used FlatLab Admin Template for styling.
+Angular8 used for front-end development. I used FlatLab Admin Template for styling. UI requires a 'npm update' before start.
+
+You can register and process with your own account or simply use 'email: koray@gmail.com, pass: 1234' for login. API hashing passwords.
 
 # System
 
