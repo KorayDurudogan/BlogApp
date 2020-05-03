@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 
 import { PostsService } from '../posts.service';
-
 import { Post } from '../post.model';
+import { NewPostComponent } from '../new-post/new-post.component';
 
 @Component({
   selector: 'app-list',
@@ -21,7 +22,7 @@ export class PostsListComponent implements OnInit, OnDestroy {
 
   hashtag: string;
 
-  constructor(private postService: PostsService) { }
+  constructor(private postService: PostsService, private dialog: MatDialog) { }
 
   ngOnDestroy() {
     this.postService.postsSubject.unsubscribe();
@@ -85,4 +86,12 @@ export class PostsListComponent implements OnInit, OnDestroy {
     }
   }
 
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "640px";
+    dialogConfig.height = "260px";
+    dialogConfig.panelClass = "custom-dialog-container";
+    this.dialog.open(NewPostComponent, dialogConfig);
+  }
 }

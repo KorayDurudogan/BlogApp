@@ -19,7 +19,11 @@ export class PostsService {
     return this.http.get<{ posts: Post[] }>(this.hostEndPoint + '/posts');
   }
 
-  fetchPostsByHashtag(hashtag) {
+  fetchPostsByHashtag(hashtag: string) {
     return this.http.get<{ posts: Post[] }>(this.hostEndPoint + '/posts?hashtag=' + hashtag);
+  }
+
+  sharePost(new_post: Post) {
+    return this.http.put<any>(this.hostEndPoint + '/posts',  new_post);
   }
 }

@@ -8,6 +8,9 @@
         placeholder="Hashtag">
     <button (click)="searchByHashtag()" type="button" class="btn btn-info "><i class="fa fa-search"></i>
         Search</button>
+    <button (click)="openDialog()" type="button" style="float: right;" class="btn btn-success "><i
+            class="fa fa-plus"></i>
+        New Post</button>
 </div>
 
 <div *ngFor="let post of posts">

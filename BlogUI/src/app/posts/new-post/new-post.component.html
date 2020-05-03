@@ -1,0 +1,31 @@
+<form [formGroup]="postForm" class="form-signin" style="margin-top: 0px;" (ngSubmit)="onSubmit()">
+    <section formGroupName="postWrap" class="panel">
+        <div [ngClass]="{'form-group':true, 'has-error': !postForm.get('postWrap.headerTextBox').valid && postForm.get('postWrap.headerTextBox').touched}"
+            class="twt-write col-sm-12">
+            <input formControlName="headerTextBox" type="text" class="form-control" style="margin-bottom: 10px;"
+                placeholder="Post header...">
+        </div>
+        <div [ngClass]="{'form-group':true, 'has-error': !postForm.get('postWrap.bodyTextArea').valid && postForm.get('postWrap.bodyTextArea').touched}"
+            class="twt-write col-sm-12">
+            <textarea formControlName="bodyTextArea" class="form-control  t-text-area" rows="2"
+                placeholder="Post body..."></textarea>
+        </div>
+        <footer class="twt-footer">
+            <input formControlName="hashtagTextBox" type="text" style="margin-bottom: 10px;" class="form-control"
+                placeholder="#hashtag1 #hashtag2 #...">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="label_check c_on" for="checkbox-01">
+                        <input formControlName="privateCheckbox" name="sample-checkbox-01" type="checkbox"> Private
+                    </label>
+                </div>
+                <div class="col-sm-6">
+                    <button [disabled]="!postForm.valid" class="btn btn-space btn-info pull-right" type="submit">
+                        Share Post
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</form>
