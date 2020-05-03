@@ -40,6 +40,7 @@ function fetchFollowedPosts(req, following) {
                         //if user has any posts, filter publics and add to the post iterator.
                         if (user.posts) {
                             let filtered_posts = new PostIterator(user.posts.filter(e => !e.is_private));
+                            filtered_posts.setPublisher(user.email);
                             followedPosts.add(filtered_posts.get_posts());
                         }
                     });
@@ -55,6 +56,7 @@ router.get('/', function (req, res) {
         .then(async (result) => {
             try {
                 var logedin_user_posts = new PostIterator(result.posts);
+                logedin_user_posts.setPublisher("me");
 
                 //if user following other users, we are getting their posts too.
                 if (result.following) {
