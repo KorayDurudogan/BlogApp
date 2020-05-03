@@ -8,11 +8,13 @@ import { PostsComponent } from './posts.component';
 import { PostsService } from './posts.service';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { SharedModule } from '../shared/shared.module';
+import { PostComponent } from './posts-list/post/post.component';
 
 @NgModule({
   declarations: [
     PostsComponent,
-    PostsListComponent
+    PostsListComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,

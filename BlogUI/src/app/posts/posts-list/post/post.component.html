@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse">
+                <b>{{post.publisher}}</b> / {{post.head}}
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" style="height: auto;">
+        <div class="panel-body">
+            {{post.body}}
+            <div *ngIf="post.hashtags">
+                <hr>
+                <span *ngFor="let hashtag of post.hashtags" style="margin-right: 5px;"
+                    class="label label-primary">#{{hashtag}}</span>
+            </div>
+        </div>
+    </div>
+</div>

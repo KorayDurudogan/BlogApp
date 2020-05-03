@@ -13,8 +13,11 @@ export class PostsListComponent implements OnInit, OnDestroy {
 
   posts: Post[];
 
-  serviceErrorMessage: string;
+  errorMessage: string;
   isErrorVisible: boolean;
+
+  isInfoVisible: boolean;
+  infoMessage: string;
 
   hashtag: string;
 
@@ -36,10 +39,18 @@ export class PostsListComponent implements OnInit, OnDestroy {
       (result) => {
         this.postService.postsSubject.next(result.posts);
         this.isErrorVisible = false;
+        if (result.posts.length < 1) {
+          this.isInfoVisible = true;
+          this.infoMessage = "No Posts to Show !";
+        }
+        else {
+          this.isInfoVisible = false;
+        }
       },
       error => {
-        this.serviceErrorMessage = error.error.message;
+        this.errorMessage = error.error.message;
         this.isErrorVisible = true;
+        this.isInfoVisible = false;
       }
     );
   }
@@ -52,13 +63,25 @@ export class PostsListComponent implements OnInit, OnDestroy {
       this.postService.fetchPostsByHashtag(hashtag).subscribe(
         (result) => {
           this.postService.postsSubject.next(result.posts);
+          if (result.posts.length < 1) {
+            this.isInfoVisible = true;
+            this.infoMessage = "No Posts to Show !";
+          }
+          else {
+            this.isInfoVisible = false;
+          }
+
           this.isErrorVisible = false;
         },
         error => {
-          this.serviceErrorMessage = error.error.message;
+          this.errorMessage = error.error.message;
           this.isErrorVisible = true;
+          this.isInfoVisible = false;
         }
       );
+    }
+    else {
+      this.setPosts();
     }
   }
 
