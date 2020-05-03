@@ -1,1 +1,14 @@
-<p>users works!</p>
+<app-error-panel [isVisible]="isErrorVisible" [errorMessage]="errorMessage"></app-error-panel>
+<app-info-panel [isVisible]="isInfoVisible" [errorMessage]="infoMessage"></app-info-panel>
+
+<div class="row">
+    <section *ngFor="let user of users" class="panel">
+        <header class="panel-heading" style="height: 55px;">
+            {{user.email}}
+            <button (click)="followClick(user._id)" style="float: right;" *ngIf="!user.is_followed" type="button"
+                class="btn btn-success"><i class="fa fa-eye"></i> Follow </button>
+            <button (click)="unfollowClick(user._id)" style="float: right;" *ngIf="user.is_followed" type="button"
+                class="btn btn-danger"><i class="fa fa-eye-slash"></i> Unfollow </button>
+        </header>
+    </section>
+</div>

@@ -11,19 +11,19 @@ export class PostsService {
 
   postsSubject = new BehaviorSubject<Post[]>(null);
 
-  hostEndPoint = "http://localhost:1453/api";
+  hostEndPoint = "http://localhost:1453/api/posts";
 
   constructor(private http: HttpClient) { }
 
   fetchPosts() {
-    return this.http.get<{ posts: Post[] }>(this.hostEndPoint + '/posts');
+    return this.http.get<{ posts: Post[] }>(this.hostEndPoint);
   }
 
   fetchPostsByHashtag(hashtag: string) {
-    return this.http.get<{ posts: Post[] }>(this.hostEndPoint + '/posts?hashtag=' + hashtag);
+    return this.http.get<{ posts: Post[] }>(this.hostEndPoint + '?hashtag=' + hashtag);
   }
 
   sharePost(new_post: Post) {
-    return this.http.put<any>(this.hostEndPoint + '/posts',  new_post);
+    return this.http.put<any>(this.hostEndPoint, new_post);
   }
 }
