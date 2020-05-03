@@ -13,12 +13,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PostsModule } from './posts/posts.module';
 import { TokenInterceptor } from './token.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { MenuComponent } from './menu/menu.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    MenuComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

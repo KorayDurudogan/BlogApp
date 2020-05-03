@@ -4,6 +4,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { PostsService } from '../posts.service';
 import { Post } from '../post.model';
 import { NewPostComponent } from '../new-post/new-post.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -13,26 +14,25 @@ import { NewPostComponent } from '../new-post/new-post.component';
 export class PostsListComponent implements OnInit, OnDestroy {
 
   posts: Post[];
-
   errorMessage: string;
   isErrorVisible: boolean;
-
   isInfoVisible: boolean;
   infoMessage: string;
-
   hashtag: string;
+
+  posts_subscription: Subscription;
 
   constructor(private postService: PostsService, private dialog: MatDialog) { }
 
   ngOnDestroy() {
-    this.postService.postsSubject.unsubscribe();
+    this.posts_subscription.unsubscribe();
   }
 
   ngOnInit() {
-    this.setPosts();
-    this.postService.postsSubject.subscribe((posts: Post[]) => {
+    this.posts_subscription = this.postService.postsSubject.subscribe((posts: Post[]) => {
       this.posts = posts;
     });
+    this.setPosts();
   }
 
   setPosts() {

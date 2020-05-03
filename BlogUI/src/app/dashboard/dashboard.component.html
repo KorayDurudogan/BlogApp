@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<section id="container">
+    <header class="header white-bg">
+        <a routerLink="dashboard" class="logo">Rapsodo<span>BlogApp</span></a>
+    </header>
+
+    <app-menu></app-menu>
+    <section id="main-content">
+        <section class="wrapper">
+            <router-outlet></router-outlet>
+        </section>
+    </section>
+</section>
