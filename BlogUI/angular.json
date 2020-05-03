@@ -30,21 +30,21 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
-              "node_modules/admin-template/css/bootstrap.min.css",
-              "node_modules/admin-template/css/bootstrap-reset.css",
-              "node_modules/admin-template/font-awesome/css/font-awesome.css",
-              "node_modules/admin-template/css/style.css",
-              "node_modules/admin-template/css/style-responsive.css"
+              "src/admin-template/css/bootstrap.min.css",
+              "src/admin-template/css/bootstrap-reset.css",
+              "src/admin-template/font-awesome/css/font-awesome.css",
+              "src/admin-template/css/style.css",
+              "src/admin-template/css/style-responsive.css"
             ],
             "scripts": [
-              "node_modules/admin-template/js/jquery.js",
-              "node_modules/admin-template/js/bootstrap.min.js",
-              "node_modules/admin-template/js/jquery.dcjqaccordion.2.7.js",
-              "node_modules/admin-template/js/jquery.scrollTo.min.js",
-              "node_modules/admin-template/js/jquery.nicescroll.js",
-              "node_modules/admin-template/js/respond.min.js",
-              "node_modules/admin-template/js/common-scripts.js",
-              "node_modules/admin-template/js/jquery.stepy.js"
+              "src/admin-template/js/jquery.js",
+              "src/admin-template/js/bootstrap.min.js",
+              "src/admin-template/js/jquery.dcjqaccordion.2.7.js",
+              "src/admin-template/js/jquery.scrollTo.min.js",
+              "src/admin-template/js/jquery.nicescroll.js",
+              "src/admin-template/js/respond.min.js",
+              "src/admin-template/js/common-scripts.js",
+              "src/admin-template/js/jquery.stepy.js"
             ]
           },
           "configurations": {
